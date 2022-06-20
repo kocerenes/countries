@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/enes/AndroidStudioProjects/CountriesApp/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Users/enes/AndroidStudioProjects/CountriesApp/app/src/main/res/layout/countries_recycler_row.xml" value="0.3560606060606061" />
         <entry key="..\:/Users/enes/AndroidStudioProjects/CountriesApp/app/src/main/res/layout/fragment_country_detail.xml" value="0.36666666666666664" />
         <entry key="..\:/Users/enes/AndroidStudioProjects/CountriesApp/app/src/main/res/layout/fragment_country_list.xml" value="0.35260416666666666" />
       </map>

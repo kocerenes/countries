@@ -13,6 +13,10 @@
         <action
             android:id="@+id/action_countryDetailFragment_to_countryListFragment"
             app:destination="@id/countryListFragment" />
+        <argument
+            android:name="countryUuid"
+            app:argType="integer"
+            android:defaultValue="0" />
     </fragment>
     <fragment
         android:id="@+id/countryListFragment"
