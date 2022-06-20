@@ -48,9 +48,4 @@ class CountryListRecyclerAdapter(val countryList : ArrayList<Country>)
         return countryList.size
     }
 
-    fun updateCountryList(newCountryList : List<Country>){
-        countryList.clear()
-        countryList.addAll(diffList)
-    }
-
 }
