@@ -1,7 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
-    id 'androidx.navigation.safeargs.kotlin'
+    id 'androidx.navigation.safeargs'
     id 'kotlin-kapt'
     id 'kotlin-android-extensions'
 }
@@ -34,7 +34,7 @@ android {
     }
 
     buildFeatures{
-        viewBinding = true
+
         dataBinding = true
     }
 
@@ -42,12 +42,12 @@ android {
 
 def lifeCycleExtensionVersion = '1.1.1'
 def supportVersion = '28.0.0'
-def retrofitVersion = '2.3.0'
-def glideVersion = '4.9.0'
+def retrofitVersion = '2.9.0'
+def glideVersion = '4.13.0'
 def rxJavaVersion = '2.1.1'
 def roomVersion = '2.4.2'
 def navVersion = '2.4.2'
-def preferencesVersion = '1.1.0'
+def preferencesVersion = '1.2.0'
 
 dependencies {
 

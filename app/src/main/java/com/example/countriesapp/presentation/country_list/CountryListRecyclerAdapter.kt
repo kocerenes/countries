@@ -9,8 +9,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.countriesapp.R
 import com.example.countriesapp.model.Country
 import kotlinx.android.synthetic.main.countries_recycler_row.view.*
+import kotlinx.android.synthetic.main.countries_recycler_row.view.tvRegion
+import kotlinx.android.synthetic.main.fragment_country_detail.view.*
 
-class CountryListRecyclerAdapter(val countryList : ArrayList<Country>)
+class CountryListRecyclerAdapter()
     :RecyclerView.Adapter<CountryListRecyclerAdapter.CountryViewHolder>(){
 
         class CountryViewHolder(var view : View) : RecyclerView.ViewHolder(view){
@@ -40,12 +42,12 @@ class CountryListRecyclerAdapter(val countryList : ArrayList<Country>)
     }
 
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
-        holder.view.tvName.text = countryList[position].name
-        holder.view.tvRegion.text = countryList[position].region
+        holder.view.tvName.text = diffList[position].name
+        holder.view.tvRegion.text = diffList[position].region
     }
 
     override fun getItemCount(): Int {
-        return countryList.size
+        return diffList.size
     }
 
 }
