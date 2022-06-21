@@ -3,6 +3,7 @@ package com.example.countriesapp.presentation.country_list
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -44,6 +45,11 @@ class CountryListRecyclerAdapter()
     override fun onBindViewHolder(holder: CountryViewHolder, position: Int) {
         holder.view.tvName.text = diffList[position].name
         holder.view.tvRegion.text = diffList[position].region
+
+        holder.view.setOnClickListener{
+            val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment()
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
     override fun getItemCount(): Int {
