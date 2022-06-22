@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.countriesapp.R
 import com.example.countriesapp.model.Country
+import com.example.countriesapp.utils.downloadFromUrl
+import com.example.countriesapp.utils.placeholderProgressBar
 import kotlinx.android.synthetic.main.countries_recycler_row.view.*
 import kotlinx.android.synthetic.main.countries_recycler_row.view.tvRegion
 import kotlinx.android.synthetic.main.fragment_country_detail.view.*
@@ -49,6 +51,12 @@ class CountryListRecyclerAdapter()
         holder.view.setOnClickListener{
             val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment()
             Navigation.findNavController(it).navigate(action)
+        }
+        diffList[position].flag?.let { imageUrl ->
+            holder.view.imageView.downloadFromUrl(
+                imageUrl,
+                placeholderProgressBar(holder.view.context)
+            )
         }
     }
 

@@ -1,5 +1,6 @@
 package com.example.countriesapp.presentation.country_list
 
+import android.opengl.Visibility
 import android.os.Bundle
 import android.view.LayoutInflater
 import androidx.fragment.app.Fragment
@@ -38,6 +39,16 @@ class CountryListFragment : Fragment() {
 
         rvCountryList.layoutManager = LinearLayoutManager(context)
         rvCountryList.adapter = countryAdapter
+
+
+        swipeRefreshLayout.setOnRefreshListener {
+            rvCountryList.visibility = View.GONE
+            countryError.visibility = View.GONE
+            countryLoading.visibility = View.VISIBLE
+            viewModel.refreshData()
+            swipeRefreshLayout.isRefreshing = false
+        }
+
         observeLiveData()
     }
 
