@@ -2,6 +2,13 @@
 <layout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
+    
+    <data>
+        <variable
+            name="selectedCountry"
+            type="com.example.countriesapp.model.Country" />
+    </data>
+    
 <RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,6 +20,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:scaleType="fitCenter"
+        load_image="@{selectedCountry.flag}"
         android:padding="10dp"
         android:minHeight="200dp">
 
@@ -23,7 +31,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ivCountry"
-        android:text="Country Name"
+        android:text="@{selectedCountry.name}"
         android:textSize="20sp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
@@ -36,7 +44,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCountryName"
-        android:text="Country Capital"
+        android:text="@{selectedCountry.capital}"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -48,7 +56,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCapital"
-        android:text="Country Region"
+        android:text="@{selectedCountry.region}"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -60,7 +68,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvRegion"
-        android:text="Country Currency"
+        android:text="@{selectedCountry.currency}"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">
@@ -72,7 +80,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvCurrency"
-        android:text="Country Language"
+        android:text="@{selectedCountry.language}"
         android:textSize="16sp"
         android:layout_centerHorizontal="true"
         android:layout_margin="7dp">

@@ -5,9 +5,11 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.countriesapp.R
+import com.example.countriesapp.databinding.FragmentCountryDetailBinding
 import com.example.countriesapp.utils.downloadFromUrl
 import com.example.countriesapp.utils.placeholderProgressBar
 import kotlinx.android.synthetic.main.fragment_country_detail.*
@@ -18,6 +20,7 @@ class CountryDetailFragment : Fragment() {
 
     private lateinit var viewModel : CountryDetailViewModel
     private var countryUuid = 0
+    private lateinit var databinding : FragmentCountryDetailBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +32,8 @@ class CountryDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return inflater.inflate(R.layout.fragment_country_detail,container,false)
+        databinding = DataBindingUtil.inflate(inflater,R.layout.fragment_country_detail,container,false)
+        return databinding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -49,14 +53,7 @@ class CountryDetailFragment : Fragment() {
     private fun observeLiveData(){
         viewModel.countryLiveData.observe(viewLifecycleOwner, Observer {
             it?.let {
-                tvCountryName.text = it.name
-                tvCapital.text = it.capital
-                tvCurrency.text = it.currency
-                tvLanguage.text = it.language
-                tvRegion.text = it.region
-                it.flag?.let { imageUrl ->
-                    ivCountry.downloadFromUrl(imageUrl, placeholderProgressBar(requireContext()))
-                }
+                databinding.selectedCountry = it
 
             }
         })
