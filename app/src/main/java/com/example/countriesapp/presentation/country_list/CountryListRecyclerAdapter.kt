@@ -50,6 +50,7 @@ class CountryListRecyclerAdapter()
 
         holder.view.setOnClickListener{
             val action = CountryListFragmentDirections.actionCountryListFragmentToCountryDetailFragment()
+            action.countryUuid = diffList[position].uuid
             Navigation.findNavController(it).navigate(action)
         }
         diffList[position].flag?.let { imageUrl ->

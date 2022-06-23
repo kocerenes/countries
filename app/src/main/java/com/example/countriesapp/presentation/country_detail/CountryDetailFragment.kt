@@ -8,6 +8,8 @@ import android.view.ViewGroup
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import com.example.countriesapp.R
+import com.example.countriesapp.utils.downloadFromUrl
+import com.example.countriesapp.utils.placeholderProgressBar
 import kotlinx.android.synthetic.main.fragment_country_detail.*
 import java.util.zip.Inflater
 
@@ -33,12 +35,14 @@ class CountryDetailFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProvider(this).get(CountryDetailViewModel::class.java)
-        viewModel.getDataFromRoom()
-
         arguments?.let {
             countryUuid = CountryDetailFragmentArgs.fromBundle(it).countryUuid
         }
+
+        viewModel = ViewModelProvider(this).get(CountryDetailViewModel::class.java)
+        viewModel.getDataFromRoom(countryUuid)
+
+        observeLiveData()
 
     }
 
@@ -50,6 +54,10 @@ class CountryDetailFragment : Fragment() {
                 tvCurrency.text = it.currency
                 tvLanguage.text = it.language
                 tvRegion.text = it.region
+                it.flag?.let { imageUrl ->
+                    ivCountry.downloadFromUrl(imageUrl, placeholderProgressBar(requireContext()))
+                }
+
             }
         })
     }
