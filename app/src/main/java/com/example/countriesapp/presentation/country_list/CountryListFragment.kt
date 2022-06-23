@@ -45,7 +45,7 @@ class CountryListFragment : Fragment() {
             rvCountryList.visibility = View.GONE
             countryError.visibility = View.GONE
             countryLoading.visibility = View.VISIBLE
-            viewModel.refreshData()
+            viewModel.refreshFromApi()
             swipeRefreshLayout.isRefreshing = false
         }
 
